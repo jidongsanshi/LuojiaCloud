@@ -1,0 +1,28 @@
+#title
+{
+text-align: center;
+font-size: 25px;
+}
+#container{	
+	background-color: white;
+	height:300px;;
+	width:400px;
+	position:absolute;
+	right:100px;
+	top:150px;
+	}		
+#input{
+	text-align:center;
+	font-size:15px;
+	}
+img{
+	max-width:100%;
+	height:auto;
+	}
+#register{
+	text-align: center;
+	font-size: 8px;
+}
+#head{
+background-color: #FFFFFF;
+}
