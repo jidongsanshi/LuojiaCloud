@@ -4,19 +4,35 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="./css/register.css">
 		<title>注册珞珈云账号</title>
+		<script src="./js/jquery-3.6.0.min.js"></script>
 	</head>
+	<script>
+	function limitpassword(){
+		var p1 = document.getElementById("password1");
+		if(p1.value.length<8){
+			afterpassword1.innerHTML="<font color='red'>密码至少八位</font>"
+		}
+	}
+	function checkpassword(){
+		var p1 = document.getElementById("password1");
+		var p2 = document.getElementById("password2");
+		if(p1.value!=p2.value){
+			afterpassword2.innerHTML="<font color='red'>两次输入的密码不一致</font>"
+		}
+	}
+	</script>
 	<body bgcolor="whitesmoke">
 		<div id="head">
 		<img src="img/珞珈云logo.png" >
 		</div>
-		<br><br>
+		<br>
 		<div id="container"><br><br>
 			<div id="title">注册珞珈云账号<br><br></div><hr>
 			<div id="input">
 			<form>
-				账号:<input type="text" name="account"/><br>
-				密码:<input type="password" name="password" /><br>
-				确认密码:<input type="password" name="confirm_password" /><br><br>
+				<input type="text" name="account" placeholder="账号"/><br>
+				<input type="password" id="password1" name="password" placeholder="密码" onblur="limitpassword()"/><span id="afterpassword1"></span><br>
+				<input type="password" id="password2" name="confirm_password"  placeholder="确认密码" onblur="checkpassword()"/><span id="afterpassword2"></span><br><br>
 				<input type="submit" name="submit" value="注册"/><br><br>
 			</form>
 			<div id="singin">
