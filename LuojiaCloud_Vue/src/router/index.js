@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '../components/home.vue'
-import signin from '../components/Signin.vue'
-import index from '../index.vue'
-import ordermanager from '../components/OrderManager.vue'
-import aimarker from '../components/AImarket.vue'
-import onlinepractice from '../components/onlinepractice.vue'
-import register from '../components/Register.vue'
+import home from '../home.vue'
+import signin from '../Signin.vue'
+import ordermanager from '../OrderManager.vue'
+import aimarker from '../AImarket.vue'
+import onlinepractice from '../onlinepractice.vue'
+import register from '../Register.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -14,35 +13,35 @@ export default new Router({
   routes: [
     {
       path: '*',
-      redirect:'/components/home'
+      redirect:'/home'
     },
      {
-      path: '/components/home',
+      path: '/home',
       name: 'home',
       component:home
     },
 	{
-	  path: '/components/signin',
+	  path: '/signin',
 	  name: 'signin',
 	  component:signin
 	},
 	{
-	  path: '/components/register',
+	  path: '/register',
 	  name: 'register',
 	  component:register
 	},
 	{
-	  path: '/components/ordermanager',
+	  path: '/ordermanager',
 	  name: 'ordermanager',
 	  component:ordermanager
 	},
 	{
-	  path: '/components/aimarker',
+	  path: '/aimarker',
 	  name: 'ordermanager',
 	  component:ordermanager
 	},
 	{
-	  path: '/components/onlinepractice',
+	  path: '/onlinepractice',
 	  name: 'onlinepractice',
 	  component:onlinepractice
 	}

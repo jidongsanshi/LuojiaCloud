@@ -22,12 +22,12 @@
 		data() {
 		  return {
 			navList:[ 
-			            {name:'/components/home',navItem:'站点主页'}, 
-			            {name:'/components/aimarker',navItem:'算法商城'},
-			            {name:'/components/onlinepractice',navItem:'在线训练'}, 
-			            {name:'/components/ordermanager',navItem:'订单管理'}, 
-			            {name:'/components/register',navItem:'注册'}, 
-						{name:'/components/signin',navItem:'登录'}, 
+			            {name:'/home',navItem:'站点主页'}, 
+			            {name:'/aimarker',navItem:'算法商城'},
+			            {name:'/onlinepractice',navItem:'在线训练'}, 
+			            {name:'/ordermanager',navItem:'订单管理'}, 
+			            {name:'/register',navItem:'注册'}, 
+						{name:'/signin',navItem:'登录'}, 
 			            ]
 			
 		  };
