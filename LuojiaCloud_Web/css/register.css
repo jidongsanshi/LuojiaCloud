@@ -1,0 +1,22 @@
+#title
+{
+text-align: center;
+font-size: 25px;
+}
+#container{	
+	background-color: white;
+	height:800px;;
+	width:1000px;
+	margin: 0 auto;
+	}		
+#input{
+	text-align:center;
+	font-size:15px;
+	}
+#signin{
+	text-align: center;
+	font-size: 8px;
+}
+#head{
+background-color: #FFFFFF;
+}
