@@ -5,7 +5,8 @@ import index from './index.vue'
 import router from './router/index.js'
 import VueRouter from 'vue-router'
 import axios from 'axios'
-
+import global from './common.vue'
+Vue.prototype.COMMON = global
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 

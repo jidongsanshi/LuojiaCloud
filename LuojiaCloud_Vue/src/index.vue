@@ -1,48 +1,72 @@
 <template>
-	<div id="all">
-		<el-row>
-			<el-col :span="20" :offset="2">
-				<div id="meau">
-					<el-menu :default-active="this.$router.path" class="el-menu-demo" mode="horizontal" @select="handleSelect" router  >
-						<img src="./img/珞珈云logo.png" align="right"/>
-						<el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name" >
-						{{ item.navItem }}
-						</el-menu-item>
-					</el-menu>
-				</div>
-			</el-col>
-		</el-row>
-		<router-view></router-view>
+	<div id="all" >
+			  <el-row>
+			  	<el-col :span="3" :offset="2">
+					<img src="./img/珞珈云logo.png" align="center" />
+				</el-col>
+				<el-col :span="10" :offset="2">
+					<div id="meau">
+						<el-menu :default-active="this.$router.path" class="el-menu-demo" mode="horizontal"  router 
+						  text-color="#999999"
+						 >
+							
+							<el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name"  >
+						&nbsp;&nbsp;{{ item.navItem }}&nbsp;&nbsp;
+							</el-menu-item>
+						</el-menu>
+						
+					</div>
+				</el-col>
+				<el-col :span="2" :offset="2">
+					<div>
+						<el-menu  class="el-menu-demo" mode="horizontal"  router 
+						  text-color="#999999"
+						 >
+							
+							<el-menu-item   >
+						    登录测试
+							</el-menu-item>
+						</el-menu>
+					</div>
+				</el-col>	
+				<el-col :span="1" >
+			  		<div  class="block" ><el-avatar  :size="50" :src="circleUrl" ></el-avatar></div>
+				</el-col>			
+			  </el-row>	
+					<div class="line"></div>
+			  <router-view ></router-view>
+<!-- 		{{account}} -->
+	
 	</div>
 </template>
 
 <script>
-
+ import AImarket from './AImarket.vue'
 	export default {
 		data() {
 		  return {
-			navList:[ 
-			            {name:'/home',navItem:'站点主页'}, 
-			            {name:'/aimarker',navItem:'算法商城'},
-			            {name:'/onlinepractice',navItem:'在线训练'}, 
-			            {name:'/ordermanager',navItem:'订单管理'}, 
-			            {name:'/register',navItem:'注册'}, 
-						{name:'/signin',navItem:'登录'}, 
-			            ]
+			 circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
+			navList:this.COMMON.navList,
+			account:this.COMMON.account
+					
 			
 		  };
 		},
 	        methods: {
-	          handleSelect(key, keyPath) {
-	            console.log(key, keyPath);
-	          }
+				usernameset:function(s){
+					AImarket.data.test=s;
+				},
+			  setaccount:function(data){
+				  this.account=data
+			  }
 	        }
 	  }
+
 </script>
 
 
 <style>
-/* #all{
-	background-color: whitesmoke;
-} */
+#all{
+background-color:;
+}
 </style>
