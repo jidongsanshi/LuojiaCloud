@@ -25,7 +25,7 @@
 	export default {
 		data() {
 			return {
-				account: '55566677883',
+				account: localStorage.account,
 				tableData: []
 			}
 		},
@@ -43,8 +43,23 @@
 						console.log(err)
 					})
 			},
+			tosignin:function(){
+				if(this.account==null){
+					this.$router.push('/signin');				
+					this.open1();
+					// this.$emit("reload")
+					
+				}
+			},
+			open1() {
+			        this.$notify({
+			          message: '请先登录来查看订单',
+					  type:'warning'
+			        });
+			      },
 		},
 		mounted: function() {
+			this.tosignin()
 			this.getordersinfo()
 		}
 	}

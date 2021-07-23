@@ -64,14 +64,16 @@
 	    },
 		methods:{
 			open1() {
-			        this.$message({
-			                  message: '注册成功',
-			                  type: 'success'
-			                });
+			        this.$notify({
+			          message: '注册成功',
+					  type:'success'
+			        });
 			      },
 			open4() {
-			        this.$message.error('账号已存在！');
-			      },
+			       this.$notify.error({
+			         message: '账号已存在',
+			       });
+			      },	
 			buttonstatustest:function(){
 				if(this.accountright&&this.usernameright&&this.password1right&&this.password2right){
 						this.buttonstatus=false
@@ -81,8 +83,8 @@
 				}
 			},
 			nametest:function(){
-				if (this.username.length>16){
-					this.usernamealert="用户名长度不得超过16位"
+				if (this.username.length>8){
+					this.usernamealert="用户名长度不得超过8位"
 					this.usernameright=false
 				}
 				else{
@@ -135,7 +137,7 @@
 				}
 				else{
 					that.open1()
-					that.$router.push('/home')
+					that.$router.push('/signin')
 				}
 				})
 				.catch(function(err){

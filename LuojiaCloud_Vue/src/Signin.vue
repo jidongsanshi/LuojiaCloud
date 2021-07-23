@@ -1,11 +1,11 @@
 
 <template>
 	<div>
-		<img src="./img/IMG_20210706_101340.jpg">
+		<img  id="simg" src="./img/signin.jpg">		
 		<div id="container" ><br><br>
 			<div id="title">登录到珞珈云<br><br></div>
 			<div class="sinput">
-			<el-input placeholder="请输入用户名" v-model="account" clearable></el-input>
+			<el-input placeholder="请输入账号" v-model="account" clearable></el-input>
 			<p></p>
 			<el-input placeholder="请输入密码" v-model="password" show-password></el-input>
 			<p></p>
@@ -25,28 +25,29 @@
 </template>
 <script>
 	import axios from 'axios'
-	import index from './index.vue'
 export default {
 	data() { return{
 		activeIndex: '6',
 		account:'',
-		password:''
+		password:'',
+		userName:''
 	}
 },
 	methods: {
 		open1() {
-		        this.$message({
-		                  message: '登录成功',
-		                  type: 'success'
-		                });
+		        this.$notify({
+		          message: '登陆成功',
+				  type:'success'
+		        });
 		      },
 		open4() {
-		        this.$message.error('用户名或密码有误！');
+		       this.$notify.error({
+		         message: '账号或密码错误',
+		       });
 		      },	  
 		sign:function(){//请求登录
 		    var that= this
 			console.log("登录")
-			index.methods.usernameset(this.account)
 			axios.get("http://1.116.236.191:8701/json/signin?account="+this.account+"&password="+this.password).then(function(response){
 			console.log(response)
 			if(response.data.isright==false){
@@ -54,8 +55,10 @@ export default {
 				}
 			else{
 				that.open1()
+				that.userName = response.data.name
+				that.account=response.data.account
+				that.$emit('userSignIn', that.userName,that.account);
 				that.$router.push('/home')
-				that.COMMON.account=that.account
 			}
 			})
 			.catch(function(err){
@@ -75,16 +78,17 @@ font-size: 25px;
 }
 #container{
 	background-color: white;
-	height:300px;;
-	width:400px;
+	height:300px;
+	width:20%;
 	position:absolute;
-	right:100px;
+	right:0px;
 	top:150px;
+	float: left;
 	}		
-img{
-	max-width:100%;
+#simg{
+	max-width:80%;
 	height:auto;
-/* 	margin:0 auto; */
+	margin:0 auto;
 	}
 #sregister{
 	text-align: center;
@@ -95,4 +99,5 @@ img{
 	 text-align:center;
 	width: 200px;
 }
+
 </style>

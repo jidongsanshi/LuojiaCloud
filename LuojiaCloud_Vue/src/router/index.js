@@ -6,6 +6,7 @@ import ordermanager from '../OrderManager.vue'
 import aimarker from '../AImarket.vue'
 import onlinepractice from '../onlinepractice.vue'
 import register from '../Register.vue'
+import personal from '../personal.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -44,6 +45,11 @@ export default new Router({
 	  path: '/onlinepractice',
 	  name: 'onlinepractice',
 	  component:onlinepractice
+	},
+	{
+	  path: '/personal',
+	  name: 'personal',
+	  component:personal
 	}
 	
 	]

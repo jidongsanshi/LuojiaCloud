@@ -7,17 +7,17 @@
 	            {name:'/aimarker',navItem:'算法商城'},
 	            {name:'/onlinepractice',navItem:'在线训练'}, 
 	            {name:'/ordermanager',navItem:'订单管理'}, 
-	            {name:'/register',navItem:'注册'}, 
-				{name:'/signin',navItem:'登录'}, 
+	   //          {name:'/register',navItem:'注册'}, 
+				// {name:'/signin',navItem:'登录'}, 
 	            ]
 	var account="55566677"
-	function getaccount(a){
+	function setaccount(a){
 		this.account=a
 	}
 	export default {
 		account,
 		navList,
-		getaccount
+		setaccount
 	}
 	
 </script>

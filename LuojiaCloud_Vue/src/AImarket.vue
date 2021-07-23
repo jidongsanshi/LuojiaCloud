@@ -11,7 +11,7 @@
 						<div class="bottom clearfix">
 							<p class="des">算法介绍：{{item.goods_description}}</p>
 							<span>限时特惠：{{item.goods_price}}</span>
-							<el-button type="text" class="button" @click="makeanorder(item.goods_id)" :disabled="item.isforgot">{{isbuy(item.isforgot)}}</el-button>
+							<el-button type="text" class="button" @click="makeanorder(item.goods_id)" :disabled="item.isforgot" icon="el-icon-goods">{{isbuy(item.isforgot)}}</el-button>
 						</div>
 					</div>
 				</el-card>
@@ -25,24 +25,24 @@
 	export default {
 		data() {
 			return {
-				account:'55566677883',
+				account:localStorage.account,
 				goodslist: [],
-				orderlist:[],
 				
 			};
 		},
 		methods: {
-		// 	Isbuy:function(n){
-		// 		for(var i=0;i<this.orderlist.length;i++){
-		// 			if(n==this.orderlist[i].goods_id){
-		// 				buy="已购买"
-		// 				return true
-		// 				break
-		// 			}
-		// 		}
-		// 		return false
-		// 		this.buy="购买"
-		// 	},
+			open1() {
+			        this.$notify({
+			          message: '购买成功',
+					  type:'success'
+			        });
+			      },
+			open2() {
+			        this.$notify({
+			          message: '请先登录再购买',
+					  type:'warning'
+			        });
+			      },
 		isbuy:function(i){
 			if(i){
 				return "已购买"
@@ -56,25 +56,21 @@
 			return s
 		},
 			makeanorder:function(num){
-				axios.get("http://1.116.236.191:8701/json/makeanorder?useraccount="+this.account+"&goods_id="+num).then(function(
-						response) {
-						console.log(response)
-					})
-					.catch(function(err) {
-						console.log(err)
-					})
-			},
-			getordersinfo: function() {
-				var that = this
-				console.log("获取订单")
-				axios.get("http://1.116.236.191:8701/json/getuserorders?useraccount=" + this.account).then(function(
-						response) {
-						console.log(response)
-						that.orderlist = response.data
-					})
-					.catch(function(err) {
-						console.log(err)
-					})
+				if(this.account==null){
+					this.$router.push('/signin');				
+					this.open2();
+				}
+				else{
+					var that=this
+					axios.get("http://1.116.236.191:8701/json/makeanorder?useraccount="+this.account+"&goods_id="+num).then(function(
+							response) {
+							console.log(response)
+							that.open1()
+						})
+						.catch(function(err) {
+							console.log(err)
+						})
+				}	
 			},
 			getgoodsinfo: function() {
 				let _this = this;
@@ -89,7 +85,6 @@
 			},
 		},
 		mounted: function() {
-			this.getordersinfo()
 			this.getgoodsinfo()
 		}
 	}
